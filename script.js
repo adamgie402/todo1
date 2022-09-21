@@ -16,6 +16,7 @@ function loadTodos() {
         li.textContent = todos[i];
         todosList.appendChild(li);
         addDelButton(li);
+        addDoneButton(li);
     };
 };
 
@@ -27,6 +28,16 @@ function addDelButton(li){
     todosList.appendChild(li);
     li.appendChild(btn);
     btn.parentElement.setAttribute("draggable", "true");
+}
+
+function addDoneButton(li){
+    let btn = document.createElement('button');
+    btn.setAttribute("onclick", "changeStatus(this)");
+    btn.textContent = "done";
+    btn.classList.add("doneBtn");
+    todosList.appendChild(li);
+    li.appendChild(btn);
+    // btn.parentElement.setAttribute("draggable", "true");
 }
 
 function addTodo(e) {
@@ -55,4 +66,12 @@ function removeTodo(el){
     };
     //removing from screen
     element.remove();
+}
+
+function changeStatus(el){
+    
+    let element = el.parentElement;
+    console.log(element);
+    element.classList.toggle("taskDone");
+    
 }

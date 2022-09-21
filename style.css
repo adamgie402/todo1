@@ -1,8 +1,25 @@
+ul#todos {
+    padding-left: 0;
+}
 
-#todos {
-    display: inline-block;
+#todos li {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 7px;
+    background-color: whitesmoke;
+    display: flex;
+}
+
+li.taskDone {
+    color: rgb(110, 182, 110);
+    text-decoration: line-through;
 }
 
 #todos li>button {
+    display: block;
     margin-left: 10px;
+    align-self: flex-end;
+    justify-self: flex-end;
+    text-decoration: none;
 }
+
