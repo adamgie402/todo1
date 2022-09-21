@@ -42,3 +42,17 @@ function addTodo(e) {
     addDelButton(li);
     input.value = ""; //reset input value in html
 };
+
+function removeTodo(el){
+    let element = el.parentElement; //parent to del button
+    //removing from array
+    itemToRemove = element.firstChild;
+    let index = todos.indexOf(itemToRemove.textContent); //checking array index of element to remove
+    console.log('deleting item with index: ' + index);
+    if (index <= todos.length) {
+        todos.splice(index, 1);
+        console.log(todos);
+    };
+    //removing from screen
+    element.remove();
+}
