@@ -1,0 +1,8 @@
+
+#todos {
+    display: inline-block;
+}
+
+#todos li>button {
+    margin-left: 10px;
+}
