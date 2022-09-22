@@ -6,15 +6,18 @@ const todos = ['learn JS', 'eat something', 'go outside'];
 
 //events
 window.addEventListener('DOMContentLoaded', loadTodos);
+document.getElementById("inputTodo").focus();
 addBtn.addEventListener('click', addTodo);
 
 //functions
 function loadTodos() { 
     // this function load tasks only on startup
     for (let i = 0; i < todos.length; i++){
+        let span = document.createElement('span');
         let li = document.createElement('li');
-        li.textContent = todos[i];
+        span.textContent = todos[i]; 
         todosList.appendChild(li);
+        li.appendChild(span);
         addDelButton(li);
         addDoneButton(li);
     };
@@ -43,14 +46,17 @@ function addDoneButton(li){
 function addTodo(e) {
     // this function adding new task from input
     e.preventDefault(); // to prevent standard button bevaviour
+    let span = document.createElement('span');
     let li = document.createElement('li');
-    li.textContent = input.value    
+    span.textContent = input.value;   
     //add to array
     todos.push(input.value);
     console.log(todos);
     //add to screen
     todosList.appendChild(li);
+    li.appendChild(span);
     addDelButton(li);
+    addDoneButton(li);
     input.value = ""; //reset input value in html
 };
 
@@ -71,6 +77,7 @@ function removeTodo(el){
 function changeStatus(el){
     
     let element = el.parentElement;
+    element = element.firstChild;
     console.log(element);
     element.classList.toggle("taskDone");
     

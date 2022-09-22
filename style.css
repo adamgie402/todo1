@@ -1,25 +1,69 @@
-ul#todos {
-    padding-left: 0;
+
+body {
+    background-color:mintcream;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#todo {
+    max-width: 500px;
+    margin: 0 auto;
+}
+#todo form {
+    display: flex;
+
+}
+#todo form input {
+    flex-grow: 2;
+    font-size: 1em;
+    padding: 10px;
+}
+#todo form button {
+    margin-left: 10px;
+}
+
+#todos {
+    padding-left: 0;
+}
 #todos li {
     list-style-type: none;
     padding: 10px;
     margin-bottom: 7px;
-    background-color: whitesmoke;
+    background-color: rgb(203, 241, 222);
     display: flex;
 }
-
-li.taskDone {
-    color: rgb(110, 182, 110);
-    text-decoration: line-through;
+#todos li span {
+    flex-grow: 1;
 }
-
 #todos li>button {
     display: block;
     margin-left: 10px;
     align-self: flex-end;
     justify-self: flex-end;
     text-decoration: none;
+    flex-grow: 0
 }
 
+.addBtn {
+    color: white;
+    background-color: goldenrod;
+    border: none;
+    padding: 5px;
+}
+
+.delBtn {
+    color: white;
+    background-color: red;
+    border: 0;
+    padding: 5px;
+}
+
+.doneBtn {
+    color: white;
+    background-color: green;
+    border: none;
+    padding: 5px;
+}
+.taskDone {
+    color: rgb(110, 182, 110);
+    text-decoration: line-through;
+}
