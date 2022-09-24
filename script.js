@@ -13,18 +13,24 @@ document.getElementById("inputTodo").focus();
 addBtn.addEventListener('click', addTodo);
 delAllBtn.addEventListener('click', deleteAllTodos);
 
-
+//functions
 function getTodos(){
     console.log('f getTodos...');
-    // let todos;
+    // get todos list
     if(localStorage.getItem('todos') === null){
         console.log("local storage are empty... add something...");
         loadDefaultTodos();
-    } else { 
+    } else {
+        // get todos 
         todos = JSON.parse(localStorage.getItem('todos'));
-        console.log(todos);
-        showTodos();
+        console.log("done todos list: " + todos);
     }
+    //get done todos list
+    if(localStorage.getItem('todosDone') !== null) {
+        todosDone = JSON.parse(localStorage.getItem('todosDone'));
+        console.log("done todos list: " + todosDone);
+    }
+    showTodos();
 }
 
 function loadDefaultTodos() {
@@ -35,8 +41,6 @@ function loadDefaultTodos() {
     showTodos();
 } 
 
-
-//functions
 function showTodos() { 
     todosList.textContent = "";
     for (let i = 0; i < todos.length; i++){
@@ -47,7 +51,11 @@ function showTodos() {
         li.appendChild(span);
         addDelButton(li);
         addDoneButton(li);
-    };
+        // set taskDone attribute on done todos
+        if (todosDone.includes(span.textContent)){
+            span.setAttribute("class", "taskDone");
+        }
+    };    
 };
 
 function addDelButton(li){
@@ -75,7 +83,7 @@ function addTodo(e) {
     e.preventDefault(); 
     todos.push(input.value);
     console.log(todos);
-    input.value = ""; //reset input value in html
+    input.value = ""; //reset input value in form
     saveTodos();
 };
 
@@ -97,19 +105,51 @@ function changeStatus(el){
     let element = el.parentElement;
     element = element.firstChild;
     console.log(element);
+    // togle class on clicked elem.
     element.classList.toggle("taskDone");
+    // refresch todosDone array every time when click some done button
+    console.log('refresh done todos...');
+    // 1. clear current list
+    todosDone = [];
+    // 2. take htmlcoll. with class taskDone
+    let doneItems = document.getElementsByClassName('taskDone');
+    console.log(doneItems);
+    //iterate on htmlcollection and push to array todosDone
+    for(let i=0; i<doneItems.length; i++){
+        // console.log(doneItems[i].innerText);
+        todosDone.push(doneItems[i].innerText);
+    }
+
+    console.log(todosDone);
+
+    saveTodos();
+    
+
 }
 
 function saveTodos(){
+
+    // ...
+    // ?? czy przenieść tutaj odświeżanie tablic todos i todosDone (za każdym razem zapis w kolejności takiej jaka jest na ekranie - potrzebne do draggable list)
+
+    //save todos
     console.log("f save todos...");
     localStorage.setItem('todos', JSON.stringify(todos));
+    console.log('local strage todos: ');
     console.log(JSON.parse(localStorage.getItem('todos')));
+    //save done todos
+    localStorage.setItem('todosDone', JSON.stringify(todosDone));
+    console.log('local strage todosDone: ');
+    console.log(JSON.parse(localStorage.getItem('todosDone')));
     getTodos();
 };
 
 
 function deleteAllTodos(){
-    console.log('f delalltodos...');
+    console.log('f deletealltodos...');
     todos = [];
+    todosDone = [];
     saveTodos();
 }
+
+
