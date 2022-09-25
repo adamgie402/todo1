@@ -23,7 +23,7 @@ function getTodos(){
     } else {
         // get todos 
         todos = JSON.parse(localStorage.getItem('todos'));
-        console.log("done todos list: " + todos);
+        console.log("todos list: " + todos);
     }
     //get done todos list
     if(localStorage.getItem('todosDone') !== null) {
@@ -81,10 +81,22 @@ function addDoneButton(li){
 function addTodo(e) {
     console.log('f addtodo...');
     e.preventDefault(); 
-    todos.push(input.value);
-    console.log(todos);
-    input.value = ""; //reset input value in form
-    saveTodos();
+
+    // if todo alredy exist on list
+    if (todos.includes(input.value)){
+        input.value = "";
+        input.setAttribute('placeholder', "it's already on list ;)");
+        // show modal
+        // ...
+
+    } else {
+        todos.unshift(input.value);
+        console.log(todos);
+        input.setAttribute('placeholder', 'type something...');
+        input.value = ""; //reset input value in form
+        saveTodos();
+    }
+
 };
 
 function removeTodo(el){
@@ -119,12 +131,8 @@ function changeStatus(el){
         // console.log(doneItems[i].innerText);
         todosDone.push(doneItems[i].innerText);
     }
-
     console.log(todosDone);
-
     saveTodos();
-    
-
 }
 
 function saveTodos(){
@@ -143,7 +151,6 @@ function saveTodos(){
     console.log(JSON.parse(localStorage.getItem('todosDone')));
     getTodos();
 };
-
 
 function deleteAllTodos(){
     console.log('f deletealltodos...');
