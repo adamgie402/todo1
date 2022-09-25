@@ -14,7 +14,7 @@ h1::after {
     border: 2px solid rgb(203, 241, 222);
 }
 
-#todo {
+section {
     max-width: 500px;
     margin: 0 auto;
 }
@@ -77,4 +77,10 @@ h1::after {
 .taskDone {
     color: rgb(110, 182, 110);
     text-decoration: line-through;
+}
+
+#operationBtns {
+    display: flex;
+    justify-content: space-between;
+    
 }

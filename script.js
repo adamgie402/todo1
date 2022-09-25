@@ -179,6 +179,7 @@ function deleteDoneTodos(){
             todos.splice(index, 1); // index of elem, 1=remove only one item
         }
     });
+    //clear todosDone after erase it from todos
     todosDone = [];
     saveTodos();
 }
