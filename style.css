@@ -2,6 +2,7 @@
 body {
     background-color:mintcream;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
 }
 
 h1, h2, h3 {
@@ -26,9 +27,9 @@ section {
     flex-grow: 2;
     font-size: 1em;
     padding: 10px;
-}
-#todo form button {
-    margin-left: 10px;
+    border: 1px solid black;
+    border-right: none;
+
 }
 
 #todos {
@@ -44,10 +45,11 @@ section {
 }
 #todos li span {
     flex-grow: 1;
+    padding-top: 6px;
 }
 #todos li>button {
     display: block;
-    margin-left: 10px;
+    margin-left: 12px;
     align-self: flex-end;
     justify-self: flex-end;
     text-decoration: none;
@@ -57,22 +59,23 @@ section {
 .addBtn {
     color: white;
     background-color: goldenrod;
-    border: none;
-    padding: 5px;
+    border: 1px solid black;
+    padding: 7px 15px;
+
 }
 
 .delBtn {
     color: white;
     background-color: red;
     border: 0;
-    padding: 5px;
+    padding: 7px;
 }
 
 .doneBtn {
     color: white;
     background-color: green;
     border: none;
-    padding: 5px;
+    padding: 7px;
 }
 .taskDone {
     color: rgb(110, 182, 110);

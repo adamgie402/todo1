@@ -65,7 +65,7 @@ function showTodos() {
 function addDelButton(li){
     let btn = document.createElement('button');
     btn.setAttribute("onclick", "removeTodo(this)");
-    btn.textContent = "del";
+    btn.textContent = "Del.";
     btn.classList.add("delBtn");
     todosList.appendChild(li);
     li.appendChild(btn);
@@ -75,7 +75,7 @@ function addDelButton(li){
 function addDoneButton(li){
     let btn = document.createElement('button');
     btn.setAttribute("onclick", "changeStatus(this)");
-    btn.textContent = "done";
+    btn.textContent = "Done";
     btn.classList.add("doneBtn");
     todosList.appendChild(li);
     li.appendChild(btn);
