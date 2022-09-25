@@ -4,6 +4,7 @@ const todosList = document.getElementById('todos');
 const input = document.getElementById('inputTodo');
 const addBtn = document.getElementById('addBtn');
 const delAllBtn = document.getElementById('delAllBtn');
+const delDoneBtn = document.getElementById('delDoneBtn');
 let todos = [];
 let todosDone = [];
 
@@ -14,6 +15,7 @@ window.addEventListener('DOMContentLoaded', getTodos);
 document.getElementById("inputTodo").focus();
 addBtn.addEventListener('click', addTodo);
 delAllBtn.addEventListener('click', deleteAllTodos);
+delDoneBtn.addEventListener('click', deleteDoneTodos);
 
 // ************************ functions
 
@@ -162,6 +164,21 @@ function saveTodos(){
 function deleteAllTodos(){
     console.log('f deletealltodos...');
     todos = [];
+    todosDone = [];
+    saveTodos();
+}
+
+function deleteDoneTodos(){
+    console.log('f deletedonetodos...');
+    // go through todosDone and delete this value from todos 
+    todosDone.forEach(element => {
+        console.log('removing: ' + element);
+        //position (index) of element to delete in todos
+        index = todos.indexOf(element);
+        if (index > -1) {
+            todos.splice(index, 1); // index of elem, 1=remove only one item
+        }
+    });
     todosDone = [];
     saveTodos();
 }

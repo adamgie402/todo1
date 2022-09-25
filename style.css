@@ -33,6 +33,7 @@ h1::after {
 
 #todos {
     padding-left: 0;
+    margin-bottom: 50px;
 }
 #todos li {
     list-style-type: none;
