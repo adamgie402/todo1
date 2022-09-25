@@ -1,4 +1,5 @@
-//variables
+// ************************ variables
+
 const todosList = document.getElementById('todos');
 const input = document.getElementById('inputTodo');
 const addBtn = document.getElementById('addBtn');
@@ -7,13 +8,15 @@ let todos = [];
 let todosDone = [];
 
 
-//events
+// ************************ EVENTS
+
 window.addEventListener('DOMContentLoaded', getTodos);
 document.getElementById("inputTodo").focus();
 addBtn.addEventListener('click', addTodo);
 delAllBtn.addEventListener('click', deleteAllTodos);
 
-//functions
+// ************************ functions
+
 function getTodos(){
     console.log('f getTodos...');
     // get todos list
@@ -34,7 +37,6 @@ function getTodos(){
 }
 
 function loadDefaultTodos() {
-    // for testing purpose only...
     console.log("loading default todos...");
     const defaultTodos = ['learn JS', 'eat something', 'go outside'];
     todos = defaultTodos;
@@ -55,8 +57,8 @@ function showTodos() {
         if (todosDone.includes(span.textContent)){
             span.setAttribute("class", "taskDone");
         }
-    };    
-};
+    }    
+}
 
 function addDelButton(li){
     let btn = document.createElement('button');
@@ -81,23 +83,28 @@ function addDoneButton(li){
 function addTodo(e) {
     console.log('f addtodo...');
     e.preventDefault(); 
-
+    // input validation
+    let inputVal = input.value;
+    inputVal = inputVal.toString();
+    inputVal = inputVal.trim();
+    // if input value is empty
+    if (inputVal == ""){
+        input.value = "";
+        input.setAttribute('placeholder', 'type something...');
+        return; //stop the function
+    } 
     // if todo alredy exist on list
-    if (todos.includes(input.value)){
+    if (todos.includes(inputVal)){
         input.value = "";
         input.setAttribute('placeholder', "it's already on list ;)");
-        // show modal
-        // ...
-
     } else {
-        todos.unshift(input.value);
+        todos.unshift(inputVal);
         console.log(todos);
         input.setAttribute('placeholder', 'type something...');
         input.value = ""; //reset input value in form
         saveTodos();
     }
-
-};
+}
 
 function removeTodo(el){
     let element = el.parentElement; //parent to del button
@@ -108,7 +115,7 @@ function removeTodo(el){
     if (index <= todos.length) {
         todos.splice(index, 1);
         console.log(todos);
-    };
+    }
     saveTodos();
     getTodos();
 }
@@ -150,7 +157,7 @@ function saveTodos(){
     console.log('local strage todosDone: ');
     console.log(JSON.parse(localStorage.getItem('todosDone')));
     getTodos();
-};
+}
 
 function deleteAllTodos(){
     console.log('f deletealltodos...');
