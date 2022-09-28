@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css?ver=2128">
-    <script src="script.js?ver=2128" defer></script>
-    <title>todo</title>
+    <meta name="author" content="AdamGie402">
+    <meta name="description" content="'Quick TO-DO' application to make quick to-dos. App using vanilla JavaScript and local storage.">
+    <meta name="keywords" content="app, todo app, to-do, list, guick, notes, html, css, js, vanilla javascript, vanilla js">
+    <link rel="stylesheet" href="style.css?ver=1_1">
+    <script src="script.js?ver=1_1" defer></script>
+    <title>Quick TO-DO app</title>
     <!-- web browser cache  -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -18,13 +21,17 @@
             <h1>Quick To-Do List</h1>
             <form>
                 <input id="inputTodo" type="text" placeholder="type something...">
-                <button id="addBtn" class="addBtn">Add</button>
+                <button id="addBtn" class="addBtn">Enter</button>
             </form>
             <ul id="todos"></ul>
         </section>
         <section id="operationBtns">
             <button id="delAllBtn" class="delBtn">Delete all</button>
-            <button id="delDoneBtn" class="doneBtn">Delete Done</button>
+            <button id="delDoneBtn" class="doneBtn">Delete done</button>
+        </section>
+        <section id="footer">
+            <p>'Quick TO-DO' application to make quick to-dos. App using vanilla JavaScript and local storage. All user data is stored localy (in user device) and stay private. The tasks will be lost after erase browser history.</p>
+            <p>ver.: 1.1</p>
         </section>
     </body>
     </html>

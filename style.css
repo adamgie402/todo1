@@ -1,18 +1,27 @@
 
 body {
-    background-color:mintcream;
+    background-color: #ACE1AF;
+    /* background-color: #D0F0C0; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
 }
 
+:focus {
+    /* outline: none; */
+    outline-color: yellowgreen;
+    outline-style: solid;
+    outline-offset: 3px;
+    outline-width: 3px;;
+  }
+  
 h1, h2, h3 {
     font-weight: 100;
 }
 h1::after {
-    margin: 5px 0 35px 0;
+    margin: 7px 0 40px 0;
     display: block;
     content: "";
-    border: 2px solid rgb(203, 241, 222);
+    border-top: 1px solid green;
 }
 
 section {
@@ -27,14 +36,16 @@ section {
     flex-grow: 2;
     font-size: 1em;
     padding: 10px;
-    border: 1px solid black;
-    border-right: none;
+    border: 0px solid black;
+}
+
+#todo form input:focus {
+    border: 0px solid black;
 
 }
 
 #todos {
     padding-left: 0;
-    margin-bottom: 50px;
 }
 #todos li {
     list-style-type: none;
@@ -42,6 +53,7 @@ section {
     margin-bottom: 7px;
     background-color: rgb(203, 241, 222);
     display: flex;
+    /* border-bottom: 1px solid black; */
 }
 #todos li span {
     flex-grow: 1;
@@ -59,9 +71,11 @@ section {
 .addBtn {
     color: white;
     background-color: goldenrod;
-    border: 1px solid black;
+    background-color: green;
+    border: 0px solid black;
+    border: none;
     padding: 7px 15px;
-
+    margin-left: 12px;
 }
 
 .delBtn {
@@ -83,7 +97,15 @@ section {
 }
 
 #operationBtns {
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
-    
+    border-top: 1px solid green;
+    padding-top: 12px;    
+}
+
+#footer {
+    text-align: left;
+    margin-top: 40px;;
+    font-size: 0.7em;
 }
